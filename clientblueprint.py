@@ -1,0 +1,27 @@
+import threading 
+#client and server working at the same time
+import socket
+
+try:
+    cs = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print("[c]: SOCKET CREATED")
+except socket.error as err:
+    print("sock open error")
+    exit()
+
+   
+server_binding = ("localhost", 10000)
+cs.connect(server_binding)
+
+data_from_server = cs.recv(1024)
+
+message = data_from_server.decode()
+
+print("[c]: the message was " + message)
+cs.send(input("Response here: ").encode())
+
+print("Done")
+#cs.close()
+exit()
+
+
