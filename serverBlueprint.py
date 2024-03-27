@@ -13,30 +13,31 @@ ss.bind(server_binding)
 ss.listen()
 
 
-username = "" #global username
 def check_valid_PWD(s) -> bool:
     return True; 
 
 def start_connection(s):
+    global username
     msg = "Welcome to Blueprint. Please enter a username"
     s.send(msg.encode()) #server sending the message
 
     username = s.recv(1024).decode()
-    print("[S]: Data recieved from client: " + username)
+    print("[S]: Data recieved from client: " + username+"\n")
     #print("Done.")
     take_password(s)
 
 def take_password(s):
+    global username
     msg = "Please enter your password for " + username
     s.send(msg.encode()) #server sending request for password
 
     password = s.recv(1024).decode()
 
     if(check_valid_PWD(password)):
-        msg2 = "Password correct, Login success."
+        msg2 = "\nPassword correct, Login success."
         s.send(msg2.encode())
     else:
-        msg3 = "Password wrong, Login failed."
+        msg3 = "\nPassword wrong, Login failed."
         s.send(msg3.encode())
 
 

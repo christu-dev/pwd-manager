@@ -18,7 +18,7 @@ data_from_server = cs.recv(1024)
 
 message = data_from_server.decode()
 
-print("[c]: the message was: " + message)
+print("[c]: the message was: " + message+"\n")
 
 cs.send(input("Response here: ").encode())
 
@@ -27,7 +27,7 @@ data_from_server = cs.recv(1024)
 
 message = data_from_server.decode()
 
-print("[c]: the message was: " + message)
+print("[c]: the message was: " + message+"\n")
 
 cs.send(input("Response here: ").encode())
 
@@ -37,7 +37,7 @@ data_from_server = cs.recv(1024)
 
 message = data_from_server.decode()
 
-print("[c]: the message was " + message)
+print("[c]: the message was: " + message)
 
 print("Done")
 #cs.close()
