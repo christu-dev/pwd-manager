@@ -1,5 +1,6 @@
 import threading 
-#client and server working at the same time
+import sqlite3
+# import bcrypt
 import socket
 
 try:
@@ -9,7 +10,6 @@ except socket.error as err:
     print
     exit() 
 
-   
 server_binding = ("localhost", 10000)
 cs.connect(server_binding)
 
@@ -38,6 +38,9 @@ data_from_server = cs.recv(1024)
 message = data_from_server.decode()
 
 print("[c]: the message was: " + message)
+
+
+
 
 print("Done")
 #cs.close()
