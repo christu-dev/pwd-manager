@@ -77,6 +77,7 @@ try:
                     if check_password(username, password):
                         msg2 = "\nPassword correct, Login success."
                         successBool = True
+                        passwordAttempts = 3
                     else:
                         msg2 = "\nPassword wrong, Login failed. Try Again"
                         passwordAttempts += 1
