@@ -102,10 +102,10 @@ try:
                     client_socket.send(msg.encode())
                     response = client_socket.recv(1024).decode()
 
-                    if response == 'Y':
+                    if response == 'Y' or response == 'y':
                         want_to_signUp = True
                         responded = True
-                    elif response == 'N':
+                    elif response == 'N' or response == 'n':
                         msg2 = "\nThanks for visiting the Blueprint Login Screen."
                         responded = True
                     else:
@@ -120,8 +120,9 @@ try:
                     newpassword = client_socket.recv(1024).decode()
                     
                     
-                    if save_user(username, newpassword):
-                        msg4 = "\nNew account created with the following info: \nUsername: " +username+" \nPassword: "+password+"\nPlease save this info as there is no way to recover your account once your password is lost!"
+                    if save_user(username, newpassword): #below here ////////////////
+                        # msg4 = "\nNew account created with the following info: \nUsername: " +username+" \nPassword: "+password+"\nPlease save this info as there is no way to recover your account once your password is lost!"
+                        msg4 = "\nNew account created with the following info: \nUsername: " + username + " \nPassword: " + newpassword + "\nPlease save this info as there is no way to recover your account once your password is lost!"
                     else: #say someone signs up right as you are signing up. Because of concurrent processes, this failure is an option.
                         msg4 = "\nFailed to create account, username exists already! Please try again from the start."
                     client_socket.send(msg4.encode())
